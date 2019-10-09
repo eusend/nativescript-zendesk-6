@@ -1,6 +1,12 @@
-import { Common } from './zendesk-monety.common';
+import { Common, User, ZendeskAccount, ZendeskAccountConfig } from './zendesk-monety.common';
 export declare class ZendeskMonety extends Common {
-  // define your typings manually
-  // or..
-  // take the ios or android .d.ts files and copy/paste them here
+    user: User;
+    account: ZendeskAccount;
+    identifyUser(id: string, name: string, email: string): void;
+    init(config: ZendeskAccountConfig): void;
+    logging(): boolean;
+    openHelpCenter(): Promise<boolean>;
+    openContactList(): Promise<boolean>;
+    createContactRequest(): Promise<boolean>;
+    setTheme(): void;
 }
