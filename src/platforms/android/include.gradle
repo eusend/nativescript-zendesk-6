@@ -1,11 +1,7 @@
-android {
-  
-}
-
 repositories {
-    maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
+  maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
 }
 
 dependencies {
-    compile group: 'com.zendesk', name: 'sdk', version: '1.5.1.2'
+    implementation group: 'com.zendesk', name: 'support', version: '3.0.1'
 }

@@ -1,65 +1,93 @@
-import { Observable } from 'tns-core-modules/data/observable';
-
-export type OpenHelpCenterOptions = {
-  name: string
-  type: string
-  id: string
-} | null
-
-export type ZendeskAccountConfig = {
-  appId: string,
-	url: string,
-	clientId: string,
-  ticketSubject: string,
-  loggingEnabled: boolean,
-  anonymous: boolean,
-  additionalInfo?: string,
-  tags?: Array<string>,
-  locale?: string
+export interface AnonUserIdentity {
+  name?: string;
+  email?: string;
 }
 
-export class ZendeskAccount {
-  public appId: string
-	public url: string
-	public clientId: string
-  public ticketSubject: string
-  public loggingEnabled: boolean
-  public initialized: boolean
-  public anonymous: boolean
-  public additionalInfo: string
-  public tags: Array<string>
-  public locale?: string
-
-  constructor(config: ZendeskAccountConfig) {
-    this.appId = config.appId
-    this.url = config.url
-    this.clientId = config.clientId
-    this.ticketSubject = config.ticketSubject
-    this.loggingEnabled = config.loggingEnabled
-    this.initialized = true
-    this.anonymous = config.anonymous
-    this.additionalInfo = config.additionalInfo || ""
-    this.tags = config.tags || []
-    if(config.locale) {
-      this.locale = config.locale
-    }
-  }
+export interface RequestOptions {
+  requestId?: string;
+  requestSubject?: string;
+  addDeviceInfo?: boolean;
+  tags?: string[];
+  files?: File[];
+  customFields?: CustomField[];
+  ticketForm?: {
+    ticketFormId: string;
+    customFields: CustomField[]
+  };
 }
 
-export class User {
-  public id: string
-  public name: string
-  public email: string
-
-  constructor(id: string, name: string, email: string) {
-    this.id = id
-    this.name = name
-    this.email = email
-  }
-
-  public isInitalized(): boolean{
-    return (this.id !== "" && this.name !== "" && this.email !== "")
-  }
+export interface CustomField {
+  id: string;
+  value: string;
 }
 
-export class Common extends Observable {}
+
+export interface ArticleOptions {
+  /** default: false */
+  contactUsButtonVisible?: boolean;
+}
+
+export interface HelpCenterOptions {
+  /** default: { contactUsButtonVisible: false } */
+  articleOptions?: ArticleOptions;
+  /** default: false */
+  contactUsButtonVisible?: boolean;
+  /** default: false */
+  categoriesCollapsed?: boolean;
+  /** default: true */
+  conversationsMenu?: boolean;
+}
+
+export interface InitConfig {
+  zendeskUrl: string;
+  applicationId: string;
+  clientId: string;
+  userLocale?: string;
+  /** AnonUserIdentity object or JWT Token string */
+  identity?: AnonUserIdentity | string;
+}
+
+export interface IosThemeSimple {
+  primaryColor: any;
+}
+
+export declare class ZendeskSdk {
+  static initialize(config: InitConfig): ZendeskSdk;
+  static setUserLocale(locale: string): ZendeskSdk;
+  static setAnonymousIdentity(anonUserIdentity?: AnonUserIdentity): ZendeskSdk;
+  static setJwtIdentity(jwtUserIdentifier: string): ZendeskSdk;
+  private static getHelpCenterUiConfigs;
+  static showHelpCenter(
+    options?: HelpCenterOptions,
+    uiConfig?: any[]
+  ): void;
+  static showHelpCenterForCategoryIds(
+    categoryIds: number[],
+    options?: HelpCenterOptions,
+    uiConfig?: any[]
+  ): void;
+  static showHelpCenterForSectionIds(
+    sectionIds: number[],
+    options?: HelpCenterOptions,
+    uiConfig?: any[]
+  ): void;
+  static showHelpCenterForLabelNames(
+    labelNames: string[],
+    options?: HelpCenterOptions,
+    uiConfig?: any[]
+  ): void;
+  static showArticle(
+    articleId: string,
+    options?: ArticleOptions,
+    uiConfig?: any[]
+  ): void;
+  static createRequest(
+    options?: RequestOptions,
+    uiConfig?: any[]
+  ): void;
+  static showRequestList(): void;
+  static setIosTheme(_theme: IosThemeSimple): ZendeskSdk;
+  static createNativeCustomFields(
+    customFields: CustomField[]
+  ): any;
+}
