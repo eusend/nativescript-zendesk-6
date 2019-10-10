@@ -2,6 +2,9 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
-<GridLayout class="page">
+<StackLayout class="page">
+    <Button text="Help Center" (tap)="onHelpCenter()"></Button>
+    <Button text="Contact List" (tap)="onContactList()"></Button>
+    <Button text="Request" (tap)="onCreateContactRequest()"></Button>
     <!-- Add your page content here -->
-</GridLayout>
+</StackLayout>
