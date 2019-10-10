@@ -1,3 +1,5 @@
+**NOTE**: Forked from [https://github.com/rhanb/nativescript-zendesk-sdk](https://github.com/rhanb/nativescript-zendesk-sdk) and turned into an npm package to use TNS 6 and the latest version of zendesk SDK.
+
 # nativescript-zendesk-sdk
 [![npm](https://img.shields.io/npm/v/nativescript-zendesk-sdk.svg)](https://www.npmjs.com/package/nativescript-localize)
 [![npm](https://img.shields.io/npm/dt/nativescript-zendesk-sdk.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-localize)
