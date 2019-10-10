@@ -5,6 +5,7 @@
 *.js
 *.js.map
 *.log
+*.aar
 src/*.d.ts
 !src/index.d.ts
 !src/references.d.ts
@@ -24,3 +25,4 @@ publish/package
 demo/report/report.html
 demo/report/stats.json
 !demo-vue/app/app.js
+**/*.aar
