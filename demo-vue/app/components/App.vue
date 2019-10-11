@@ -17,7 +17,7 @@ const ZENDESK_URL = "https://nativescript-sdk.zendesk.com"
 const ZENDESK_CLIENT_ID = "mobile_sdk_client_f9d6dd75b827d16cc820"
 
   export default {
-    mpunted(){
+    mounted(){
       const initConfig: InitConfig = {
           applicationId: ZENDESK_APP_ID,
           zendeskUrl: ZENDESK_URL,
