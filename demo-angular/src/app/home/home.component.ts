@@ -1,9 +1,9 @@
 import { Component, AfterViewInit } from "@angular/core";
 import { InitConfig, ZendeskSdk } from "nativescript-zendesk-monety";
 
-const ZENDESK_APP_ID = ""
-const ZENDESK_URL = ""
-const ZENDESK_CLIENT_ID = ""
+const ZENDESK_APP_ID = "dc7a21824e1596be8a4a75891e10461ca74d79e51fbb944d"
+const ZENDESK_URL = "https://nativescript-sdk.zendesk.com"
+const ZENDESK_CLIENT_ID = "mobile_sdk_client_f9d6dd75b827d16cc820"
 
 @Component({
     selector: "Home",
