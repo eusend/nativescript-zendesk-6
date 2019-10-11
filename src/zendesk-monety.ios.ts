@@ -142,7 +142,7 @@ export class ZendeskSdk implements ZendeskSdkBase {
     topmost().ios.controller.pushViewControllerAnimated(vc, true);
   }
 
-  public static createRequest(requestOptions: RequestOptions): void {
+  public static createRequest(requestOptions: RequestOptions = {}): void {
     const requestUiConfig = ZDKRequestUiConfiguration.new();
 
     if (!!requestOptions.requestSubject) {
