@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-zendesk-monety",
-	"version": "0.0.12",
+	"version": "0.0.14",
 	"description": "Your awesome NativeScript plugin.",
 	"main": "zendesk-monety",
 	"typings": "index.d.ts",
